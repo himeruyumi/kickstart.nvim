@@ -3,16 +3,17 @@
 -- See the kickstart.nvim README for more information
 return {
   'tpope/vim-sleuth',
+
   {
     'obsidian-nvim/obsidian.nvim',
     version = '*',
     lazy = true,
-    ft = {
-      'BufNewFile G:/My Drive/Kintsugi/*.md',
-      'BufReadPre G:/My Drive/Kintsugi/*.md',
-    },
+    ft = 'markdown',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+      'nvim-telescope/telescope.nvim',
+      'nvim-treesitter/nvim-treesitter',
     },
     opts = {
       workspaces = {
@@ -21,6 +22,32 @@ return {
           path = 'G:/My Drive/Kintsugi',
         },
       },
+      -- I tried to make the for loop sort all the properties alphabetically
+      -- but it removes all the properties with no value in the key-value pair.
+      -- Instead I've just disabled the frontmatter handling for the current
+      -- moment.
+      -- Furthermore, adding the config = function() in addition to opts = {}
+      -- causes the opts to seemingly be overriden.
+      disable_frontmatter = true,
+      ---@return table
+      note_frontmatter_func = function(note)
+        -- sets the note title as alias
+        if note.title then
+          note:add_alias(note.title)
+        end
+        local out = {}
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        else
+          out = { id = note.id, aliases = note.aliases, tags = note.tags }
+        end
+        return out
+      end,
     },
+    -- config = function()
+    --   vim.opt.conceallevel = 2
+    -- end,
   },
 }

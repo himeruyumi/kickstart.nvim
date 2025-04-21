@@ -161,6 +161,9 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- conceal font modifications for obsidian markdown
+-- vim.opt.conceallevel = 1
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
