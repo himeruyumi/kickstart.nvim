@@ -21,6 +21,10 @@ return {
           name = 'kintsugi',
           path = 'G:/My Drive/Kintsugi',
         },
+        {
+          name = 'kintsugi',
+          path = 'C:/Users/scott/My Drive/Kintsugi',
+        },
       },
       -- I tried to make the for loop sort all the properties alphabetically
       -- but it removes all the properties with no value in the key-value pair.
