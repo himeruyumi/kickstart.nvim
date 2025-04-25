@@ -11,8 +11,10 @@ return {
     ft = 'markdown',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-      'nvim-telescope/telescope.nvim',
+      'blink.cmp',
+      -- 'hrsh7th/nvim-cmp',
+      'folke/snacks.nvim',
+      -- 'nvim-telescope/telescope.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
     opts = {
@@ -26,6 +28,18 @@ return {
           path = 'C:/Users/scott/My Drive/Kintsugi',
         },
       },
+      completion = {
+        nvim_cmp = false,
+        blink = true,
+        min_chars = 2,
+      },
+      picker = {
+        name = 'snacks.pick',
+      },
+      follow_url_func = function(url)
+        vim.cmd(':silent exec "!start ' .. url .. '"')
+        vim.ui.open(url)
+      end,
       -- I tried to make the for loop sort all the properties alphabetically
       -- but it removes all the properties with no value in the key-value pair.
       -- Instead I've just disabled the frontmatter handling for the current
