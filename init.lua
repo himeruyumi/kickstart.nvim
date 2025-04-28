@@ -897,6 +897,36 @@ require('lazy').setup({
             },
           },
         },
+        harper_ls = {
+          settings = {
+            ["harper-ls"] = {
+              userDictPath = "",
+              fileDictPath = "",
+              linters = {
+                SpellCheck = true,
+                SpelledNumbers = false,
+                AnA = true,
+                SentenceCapitalization = true,
+                UnclosedQuotes = true,
+                WrongQuotes = false,
+                LongSentences = true,
+                RepeatedWords = true,
+                Spaces = true,
+                Matcher = true,
+                CorrectNumberSuffix = true
+              },
+              codeActions = {
+                ForceStable = false
+              },
+              markdown = {
+                IgnoreLinkTitle = false
+              },
+              diagnosticSeverity = "hint",
+              isolateEnglish = true,
+              dialect = "Australian"
+            }
+          }
+        }
       }
 
       -- Ensure the servers and tools above are installed
@@ -1049,7 +1079,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = false, auto_show_delay_ms = 200 },
       },
 
       sources = {
