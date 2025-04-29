@@ -90,4 +90,11 @@ return {
     --   vim.opt.conceallevel = 2
     -- end,
   },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {},
+  },
 }
